@@ -25,6 +25,8 @@ module Agents
       * `from` - Sender number. *Expects a string with 11 alphanumeric or 16 numeric characters*
 
       * `xml` - Decides whether the given text is XML or not *Allowed values: 0, 1*
+
+      * `debug` - Validate request parameters but don't actually make a call *Allowed values: 0, 1*
     MD
 
     def required_options
@@ -37,6 +39,7 @@ module Agents
 
     def optional_options
       {
+        'debug' => false,
         'from' => '',
         'xml' => false
       }
@@ -47,6 +50,7 @@ module Agents
     end
 
     form_configurable :api_key, type: :text
+    form_configurable :debug, type: :boolean
     form_configurable :from, type: :text
     form_configurable :text, type: :text
     form_configurable :to, type: :text
@@ -88,7 +92,7 @@ module Agents
       fd.keys.each do |k|
         val = interpolated[k]
 
-        if 'xml' === k
+        if 'xml' === k or 'debug' === k
           val = ActiveModel::Type::Boolean.new.cast(val) ? '1' : '0'
         end
 
