@@ -37,7 +37,7 @@ module Agents
 
     def optional_options
       {
-        'from' => 'Huginn',
+        'from' => '',
         'xml' => false
       }
     end
