@@ -1,7 +1,7 @@
 require 'net/http'
 
 module Agents
-  class Sms77VoiceAgent < Agent
+  class SevenVoiceAgent < Agent
     include ActiveModel::Type
     include FormConfigurable
 
@@ -10,11 +10,11 @@ module Agents
     no_bulk_receive!
 
     description <<-MD
-      The Sms77.io Agent receives and collects events for dispatching Text2Voice phone calls to a given number.
+      The seven.io Agent receives and collects events for dispatching Text2Voice phone calls to a given number.
 
       Expects an event with key `text`, `message`, `voice` or `sms` with the text to send. Use the `EventFormattingAgent` if lacks such a key.
 
-      Requires an API key from [Sms77](https://sms77.io) for sending.
+      Requires an API key from [seven](https://www.seven.io) for sending.
 
       Options:
 
@@ -103,7 +103,7 @@ module Agents
 
       log "Sending Text2Speech with payload #{fd.to_json}"
 
-      body = HTTParty.post('https://gateway.sms77.io/api/voice', :body => fd, :headers => {
+      body = HTTParty.post('https://gateway.seven.io/api/voice', :body => fd, :headers => {
         'Authorization' => "Basic #{interpolated['api_key']}",
         'sentWith' => "Huginn"
       })
@@ -113,9 +113,9 @@ module Agents
       if code === 100
         log body
       elsif code === 900
-        raise StandardError, "SMS77_AUTH_ERROR: #{body}"
+        raise StandardError, "SEVEN_AUTH_ERROR: #{body}"
       else
-        raise StandardError, "SMS77_DISPATCH_ERROR: #{body}"
+        raise StandardError, "SEVEN_DISPATCH_ERROR: #{body}"
       end
 
       body
