@@ -14,5 +14,8 @@ The last step is to run ```bundle``` from a shell.
 ### Usage
 Head to the administration configuration, enter your API key and you can start sending!
 
-#### Screenshots
-![Create Huginn Agent](./screenshots/create_agent.png "Create Huginn Agent")
+### Support
+
+Need help? Feel free to [contact us](https://www.seven.io/en/company/contact/).
+
+[![MIT](https://img.shields.io/badge/License-MIT-teal.svg)](LICENSE)
