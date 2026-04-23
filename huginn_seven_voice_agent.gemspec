@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.7"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rake", "~> 13.4"
   spec.add_runtime_dependency "huginn_agent", "~> 0.6.1"
   spec.authors       = ["seven communications GmbH & Co. KG"]
   spec.description   = %q{Send Text2Voice messages from Huginn via https://www.seven.io.}
